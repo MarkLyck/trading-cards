@@ -31,7 +31,7 @@ const CardsView = React.createClass({
     return (
       <div>
         <Header/>
-        <h1>All Cards</h1>
+        <h1 id="main-title">All Cards</h1>
         <ul id="cards-list">
           {AllCards}
           <Link to="/newcard"><li id="create-card">

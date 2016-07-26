@@ -4,6 +4,8 @@ import Backbone from 'backbone'
 
 import store from '../../store'
 
+import Header from '../headerView/header'
+
 const Card = React.createClass({
   getInitialState: function() {
     return {card:{}}
@@ -34,6 +36,7 @@ const Card = React.createClass({
       console.log('FOUND CARD');
       return (
         <div>
+          <Header/>
           <h3>{this.state.card.cardname}</h3>
           <p>HP: {this.state.card.hp}</p>
           <p>Height: {this.state.card.height}</p>

@@ -21,9 +21,9 @@ const UsersView = React.createClass({
   },
   render: function() {
     console.log(store.users);
-    let AllUsers = store.users.map((user) => {
+    let AllUsers = store.users.map((user, i) => {
       return (
-        <Link to={`/users/${user.get('userId')}`} key={user.get('userId')}>
+        <Link to={`/users/${user.get('userId')}`} key={i}>
           <User className="card" username={user.get('username')}/>
         </Link>
       )
@@ -31,7 +31,7 @@ const UsersView = React.createClass({
     return (
       <div>
         <Header/>
-        <h1>All Users</h1>
+        <h1 id="main-title">All Users</h1>
         <ul id="users-list">
           {AllUsers}
         </ul>

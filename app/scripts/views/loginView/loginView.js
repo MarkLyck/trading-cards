@@ -1,6 +1,8 @@
 import React from 'react';
 import store from '../../store'
 
+import Header from '../headerView/header'
+
 const Login = React.createClass({
   submitFunction: function(e){
     e.preventDefault();
@@ -11,11 +13,14 @@ const Login = React.createClass({
   },
   render: function() {
     return (
-      <form onSubmit={this.submitFunction}>
-        <input type="text" placeholder="Username" ref="username"/>
-        <input type="password" placeholder="Password"  ref="password"/>
-        <input type="submit" value="Login"/>
-      </form>
+      <div>
+        <Header/>
+        <form onSubmit={this.submitFunction}>
+          <input type="text" placeholder="Username" ref="username"/>
+          <input type="password" placeholder="Password"  ref="password"/>
+          <input type="submit" value="Login"/>
+        </form>
+      </div>
     );
   }
 })

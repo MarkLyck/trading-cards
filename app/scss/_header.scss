@@ -1,0 +1,32 @@
+@font-face {
+  font-family: pokemonTitle;
+  src: url('assets/fonts/PokemonSolid.ttf');
+}
+
+header {
+  background: $primary-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75px;
+  #logo {
+    padding-left: 40px;
+    color: #fff;
+    font-family: pokemonTitle;
+    font-size: 2rem;
+    &:hover {
+      cursor: pointer;
+      color: #fff;
+    }
+  }
+  nav {
+    display: flex;
+    height: 100%;
+    button {
+      width: 125px;
+      box-sizing: border-box;
+      height: 100%;
+      padding: 0 20px;
+    }
+  }
+}

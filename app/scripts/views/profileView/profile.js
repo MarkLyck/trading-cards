@@ -56,7 +56,7 @@ const Profile = React.createClass({
     return (
       <div>
         <Header/>
-        <h2>{this.state.user.username}</h2>
+        <h2 id="main-title">{this.state.user.username}</h2>
         <ul id="cards-list">
           {AllUserCards}
           <Link to="/newcard"><li id="create-card">

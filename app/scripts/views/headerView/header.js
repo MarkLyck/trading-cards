@@ -12,7 +12,7 @@ const Header = React.createClass({
   render: function() {
     return (
       <header>
-        <Link to="/"><h2>Trading Cards</h2></Link>
+        <Link to="/"><h2 id="logo">Trading Cards</h2></Link>
         <nav>
           <Link to="/login"><button className="nav-button" id="goto-login">Login</button></Link>
           <Link to="/signup"><button className="nav-button" id="goto-signup-btn">Signup</button></Link>
