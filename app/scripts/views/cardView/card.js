@@ -10,23 +10,18 @@ const Card = React.createClass({
   componentDidMount: function() {
     if (!store.cards.get(this.props.routeParams.cardid)) {
       store.cards.add({_id: this.props.routeParams.cardid})
-      // console.log(store.cards);
     }
     let card = store.cards.get(this.props.routeParams.cardid);
-    // console.log(card);
-    // this.setState({card: store.cards.get(this.props.routeParams.cardid)});
-    // this.setState({card: card});
-    // console.log('CARD: ', this.state.card);
-    card.fetch({
-      success:(model) => {
-        console.log('FETCHED CARD')
+    if (card.cardname) {
+      this.setState({card: model.toJSON()});
+    }
+    card.fetch({success:(model) => {
         this.setState({card: model.toJSON()});
       }
     })
   },
   render: function() {
-    // console.log(this.state.card);
-    if (this.state.card) {
+    if (this.state.card.cardname) {
       console.log('FOUND CARD');
       return (
         <div>
@@ -41,7 +36,6 @@ const Card = React.createClass({
       console.log('DONT HAVE CARD YET');
       return null
     }
-
   }
 })
 

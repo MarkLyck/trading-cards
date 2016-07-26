@@ -12,12 +12,12 @@ const Header = React.createClass({
   render: function() {
     return (
       <header>
-        <h2>Trading Cards</h2>
+        <Link to="/"><h2>Trading Cards</h2></Link>
         <nav>
           <Link to="/login"><button className="nav-button" id="goto-login">Login</button></Link>
           <Link to="/signup"><button className="nav-button" id="goto-signup-btn">Signup</button></Link>
           <button id="logout" className="nav-button" onClick={this.logout}>Logout</button>
-          <Link to="/user"><button id="profile-btn" className="nav-button">Profile</button></Link>
+          <Link to={`/users/${store.session.get('userId')}`}><button id="profile-btn" className="nav-button">Profile</button></Link>
         </nav>
       </header>
     );

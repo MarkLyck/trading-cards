@@ -21,34 +21,6 @@ const CardsView = React.createClass({
     store.cards.off()
   },
   render: function() {
-    // store.cards.add({
-    //   _id: '1',
-    //   imageURL: 'imageURL',
-    //   cardname: 'testy',
-    //   hp: 20,
-    //   height: 20,
-    //   weight: 130,
-    //   attack: 10
-    // })
-    // store.cards.add({
-    //   _id: '2',
-    //   imageURL: 'imageURL',
-    //   cardname: 'something',
-    //   hp: 20,
-    //   height: 20,
-    //   weight: 130,
-    //   attack: 10
-    // })
-    // store.cards.add({
-    //   _id: '3',
-    //   imageURL: 'imageURL',
-    //   cardname: 'different',
-    //   hp: 20,
-    //   height: 20,
-    //   weight: 130,
-    //   attack: 10
-    // })
-
     let AllCards = store.cards.map((card) => {
       return (
         <Link to={`/cards/${card.get('_id')}`} key={card.get('_id')}>
