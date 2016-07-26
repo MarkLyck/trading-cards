@@ -27,21 +27,11 @@ const CardsView = React.createClass({
           <Card className="card" cardname={card.get('cardname')}/>
         </Link>
       )
-      // return (
-      //   <Card className="card"
-      //     key={card.get('_id')}
-      //     cardname={card.get('cardname')}
-      //     hp={card.get('hp')}
-      //     height={card.get('height')}
-      //     weight={card.get('weight')}
-      //     attack={card.get('attack')}
-      //     />
-      // )
     })
     return (
       <div>
         <Header/>
-        <h1>Your Cards</h1>
+        <h1>All Cards</h1>
         <ul id="cards-list">
           {AllCards}
           <Link to="/newcard"><li id="create-card">

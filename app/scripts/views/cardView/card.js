@@ -23,7 +23,8 @@ const Card = React.createClass({
   },
   addCard: function() {
     let sessionCards = store.session.get('cards')
-    sessionCards.push(this.props.routeParams.cardid)
+    sessionCards.push(this.state.card.cardname)
+    // sessionCards.push(this.props.routeParams.cardid)
     sessionCards = _.uniq(sessionCards)
     store.session.set('cards', sessionCards)
     store.session.updateUser()

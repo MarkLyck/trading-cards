@@ -18,6 +18,7 @@ const Header = React.createClass({
           <Link to="/signup"><button className="nav-button" id="goto-signup-btn">Signup</button></Link>
           <button id="logout" className="nav-button" onClick={this.logout}>Logout</button>
           <Link to={`/users/${store.session.get('userId')}`}><button id="profile-btn" className="nav-button">Profile</button></Link>
+          <Link to={`/users`}><button id="users-btn" className="nav-button">All users</button></Link>
         </nav>
       </header>
     );

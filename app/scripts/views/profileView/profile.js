@@ -16,33 +16,37 @@ const Profile = React.createClass({
       store.users.add({_id: this.props.routeParams.id})
     }
     let user = store.users.get(this.props.routeParams.id);
-    if (user.username) {
-      this.setState({user: model.toJSON(), cards: this.state.cards});
-    }
-    user.fetch({success:(model) => {
-        this.setState({user: model.toJSON(), cards: this.state.cards});
-      }
-    })
-
-    store.userCards.reset()
-    user.get('cards').forEach(card => {
-      store.userCards.add({_id: card})
-    })
 
     store.userCards.on('update', () => {
-      this.setState({user: this.state.user, cards: store.userCards.toJSON()});
+      this.setState({cards: store.userCards.toJSON()});
     })
-    store.userCards.fetch()
 
+    user.on('change', (model) => {
+      this.setState({user: model.toJSON()});
 
+      store.userCards.reset()
+      model.get('cards').forEach(cardName => {
+        store.userCards.add({_id: cardName})
+      })
+
+      let query = model.get('cards')
+      query = JSON.stringify(query.map(name => {
+        return {cardname:name}
+      }))
+
+      store.userCards.fetch({
+        url:`https://baas.kinvey.com/appdata/kid_H1bf3MH_/cards?query={"$or":${query}}`,
+      })
+
+    })
+    user.fetch()
   },
   render: function() {
     let AllUserCards;
     if (this.state.user.cards) {
-      AllUserCards = this.state.cards.map((card) => {
-        console.log(card);
+      AllUserCards = this.state.cards.map((card, i) => {
         return (
-          <Link to={`/cards/${card}`} key={card}>
+          <Link to={`/cards/${card._id}`} key={i}>
             <UserCard className="card" cardname={card.cardname}/>
           </Link>
         )
