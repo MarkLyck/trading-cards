@@ -1,7 +1,9 @@
 import Backbone from 'backbone'
+import {hashHistory} from 'react-router'
+
 import store from '../store'
 
-import {hashHistory} from 'react-router'
+
 
 const Session = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/user/kid_H1bf3MH_/login`,

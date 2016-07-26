@@ -14,9 +14,10 @@ const Header = React.createClass({
       <header>
         <h2>Trading Cards</h2>
         <nav>
-          <Link to="/login"><button id="login">Login</button></Link>
-          <Link to="/signup"><button id="signup">Signup</button></Link>
-          <button id="logout" onClick={this.logout}>Logout</button>
+          <Link to="/login"><button className="nav-button" id="goto-login">Login</button></Link>
+          <Link to="/signup"><button className="nav-button" id="goto-signup-btn">Signup</button></Link>
+          <button id="logout" className="nav-button" onClick={this.logout}>Logout</button>
+          <Link to="/user"><button id="profile-btn" className="nav-button">Profile</button></Link>
         </nav>
       </header>
     );

@@ -9,6 +9,7 @@ import Login from './views/loginView/loginView'
 import Signup from './views/loginView/signup'
 import CardsView from './views/cardsView/cardsView'
 import NewCard from './views/newCardView/newCard'
+import Card from './views/cardView/card'
 
 $(document).ajaxSend(function(e, xhrAjax, jqueryAjax) {
   if (localStorage.authtoken) {
@@ -28,6 +29,9 @@ const CardRouter = (
     <Route path="/login" component={Login}/>
     <Route path="/signup" component={Signup}/>
     <Route path="/newcard" component={NewCard}/>
+    <Route path="/cards" component={CardsView}/>
+    <Route path="/cards/:cardid" component={Card}/>
+    <Route path="*" component={CardsView}/>
   </Router>
 )
 
