@@ -1,6 +1,8 @@
 import Backbone from 'backbone'
 import store from '../store'
 
+import {hashHistory} from 'react-router'
+
 const Session = Backbone.Model.extend({
   urlRoot: `https://baas.kinvey.com/user/kid_H1bf3MH_/login`,
   idAttribute: '_id',
@@ -24,7 +26,7 @@ const Session = Backbone.Model.extend({
       success: (model, response) => {
         localStorage.authtoken = response._kmd.authtoken
         this.unset('password')
-        // router.navigate('feed', {trigger: true})
+        hashHistory.push('/')
       },
       error: function(model, response) {
         console.log('ERROR: Login failed');
@@ -41,7 +43,8 @@ const Session = Backbone.Model.extend({
       success: function(model, response) {
         model.unset('password')
         localStorage.authtoken = response._kmd.authtoken
-        // router.navigate('feed', {trigger: true})
+        hashHistory.push('/')
+
       },
       error: function(model, response) {
         console.log('ERROR: ', arguments);
