@@ -1,4 +1,5 @@
 import React from 'react'
+import _ from 'underscore'
 import Backbone from 'backbone'
 
 import store from '../../store'
@@ -20,6 +21,13 @@ const Card = React.createClass({
       }
     })
   },
+  addCard: function() {
+    let sessionCards = store.session.get('cards')
+    sessionCards.push(this.props.routeParams.cardid)
+    sessionCards = _.uniq(sessionCards)
+    store.session.set('cards', sessionCards)
+    store.session.updateUser()
+  },
   render: function() {
     if (this.state.card.cardname) {
       console.log('FOUND CARD');
@@ -30,6 +38,7 @@ const Card = React.createClass({
           <p>Height: {this.state.card.height}</p>
           <p>Weight: {this.state.card.weigh}</p>
           <p>Attack: {this.state.card.attack}</p>
+          <button onClick={this.addCard}>Add to collection</button>
         </div>
       )
     } else {
