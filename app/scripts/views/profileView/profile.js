@@ -46,8 +46,8 @@ const Profile = React.createClass({
     if (this.state.user.cards) {
       AllUserCards = this.state.cards.map((card, i) => {
         return (
-          <Link to={`/cards/${card._id}`} key={i}>
-            <UserCard className="card" cardname={card.cardname}/>
+          <Link className="card" to={`/cards/${card._id}`} key={i}>
+            <UserCard cardname={card.cardname}/>
           </Link>
         )
       });
@@ -59,9 +59,6 @@ const Profile = React.createClass({
         <h2 id="main-title">{this.state.user.username}</h2>
         <ul id="cards-list">
           {AllUserCards}
-          <Link to="/newcard"><li id="create-card">
-            <h3>Create a card</h3>
-          </li></Link>
         </ul>
       </div>
     );

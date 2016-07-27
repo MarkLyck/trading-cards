@@ -20,11 +20,10 @@ const UsersView = React.createClass({
     store.users.off()
   },
   render: function() {
-    console.log(store.users);
     let AllUsers = store.users.map((user, i) => {
       return (
-        <Link to={`/users/${user.get('userId')}`} key={i}>
-          <User className="card" username={user.get('username')}/>
+        <Link className="card" to={`/users/${user.get('userId')}`} key={i}>
+          <User username={user.get('username')}/>
         </Link>
       )
     })

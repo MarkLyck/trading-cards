@@ -22,11 +22,17 @@ const CardsView = React.createClass({
   },
   render: function() {
     let AllCards = store.cards.map((card) => {
+      console.log(card.get('imageURL'));
       return (
-        <Link to={`/cards/${card.get('_id')}`} key={card.get('_id')}>
-          <Card className="card" cardname={card.get('cardname')}/>
+        <Link className="card" to={`/cards/${card.get('_id')}`} key={card.get('_id')} style={{backgroundImage: `url(${card.get('imageURL')}`}}>
+          <Card cardname={card.get('cardname')} url={card.get('imageURL')}/>
         </Link>
       )
+      // return (
+      //   <Card cardname={card.get('cardname')} url={card.get('imageURL')} key={card.get('_id')}>
+      //     <Link to={`/cards/${card.get('_id')}`} />
+      //   </Card>
+      // )
     })
     return (
       <div>
@@ -34,7 +40,7 @@ const CardsView = React.createClass({
         <h1 id="main-title">All Cards</h1>
         <ul id="cards-list">
           {AllCards}
-          <Link to="/newcard"><li id="create-card">
+          <Link className="card" to="/newcard"><li id="create-card">
             <h3>Create a card</h3>
           </li></Link>
         </ul>

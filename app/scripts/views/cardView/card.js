@@ -37,12 +37,14 @@ const Card = React.createClass({
       return (
         <div>
           <Header/>
-          <h3>{this.state.card.cardname}</h3>
-          <p>HP: {this.state.card.hp}</p>
-          <p>Height: {this.state.card.height}</p>
-          <p>Weight: {this.state.card.weigh}</p>
-          <p>Attack: {this.state.card.attack}</p>
-          <button onClick={this.addCard}>Add to collection</button>
+          <div className="card" >
+            <h3>{this.state.card.cardname}</h3>
+            <p>HP: {this.state.card.hp}</p>
+            <p>Height: {this.state.card.height}</p>
+            <p>Weight: {this.state.card.weigh}</p>
+            <p>Attack: {this.state.card.attack}</p>
+            <button onClick={this.addCard}>Add to collection</button>
+          </div>
         </div>
       )
     } else {

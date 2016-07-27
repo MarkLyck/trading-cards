@@ -1,8 +1,12 @@
 import React from 'react';
 import Backbone from 'backbone'
-import Cards from '../../collections/Cards'
+import {hashHistory} from 'react-router'
 
 import store from '../../store'
+
+import Cards from '../../collections/Cards'
+import Header from '../headerView/header'
+
 
 const NewCard = React.createClass({
   submit: function(e){
@@ -14,8 +18,6 @@ const NewCard = React.createClass({
     let weight = this.refs.weight.value;
     let attack = this.refs.attack.value;
 
-    console.log(Cards);
-
     store.cards.create({
       imageURL: imageURL,
       cardname: cardname,
@@ -24,19 +26,24 @@ const NewCard = React.createClass({
       weight: weight,
       attack: attack
     })
+    hashHistory.push('/')
+
   },
   render: function() {
     return (
-      <form onSubmit={this.submit}>
-        <input type="text" placeholder="image URL" ref="imageURL"/>
-        <input type="text" placeholder="Card name" ref="cardname"/>
-        <input type="text" placeholder="HP" ref="hp"/>
-        <input type="text" placeholder="Height" ref="height"/>
-        <input type="text" placeholder="Weight" ref="weight"/>
-        <input type="text" placeholder="Attack" ref="attack"/>
+      <div>
+        <Header/>
+        <form onSubmit={this.submit}>
+          <input type="text" placeholder="image URL" ref="imageURL"/>
+          <input type="text" placeholder="Card name" ref="cardname"/>
+          <input type="text" placeholder="HP" ref="hp"/>
+          <input type="text" placeholder="Height" ref="height"/>
+          <input type="text" placeholder="Weight" ref="weight"/>
+          <input type="text" placeholder="Attack" ref="attack"/>
 
-        <input type="submit" value="Create Card"/>
-      </form>
+          <input type="submit" value="Create Card"/>
+        </form>
+      </div>
     );
   }
 })
